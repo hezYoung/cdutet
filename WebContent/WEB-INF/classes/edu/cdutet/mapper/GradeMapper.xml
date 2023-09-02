@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.cdutet.mapper.GradeMapper">
+
+
+    <insert id="save">
+        INSERT INTO grade (
+            id,
+            grade_name,
+            point,
+            jietime,
+            dierzhen,
+            dier_jietime
+        )
+        VALUES
+        (
+         #{grade.id},
+         #{grade.gradeName},
+         #{grade.point},
+         #{grade.jieTime},
+         #{grade.dierZhen},
+         #{grade.dierjieTime})
+    </insert>
+    <update id="esitGrade">
+        UPDATE grade
+        SET grade_name=#{gradeName},
+            point=#{point},
+            jietime=#{jieTime},
+            dierzhen=#{dierZhen},
+            dier_jietime=#{dierjieTime} where id=#{id}
+
+    </update>
+    <delete id="deleteGrade">
+        delete from grade where id=#{id}
+    </delete>
+    <select id="list" resultType="edu.cdutet.entity.Grade">
+        select * from grade
+    </select>
+    <select id="queryGradeByid" resultType="edu.cdutet.entity.Grade">
+        select * from grade where id=#{id}
+    </select>
+</mapper>

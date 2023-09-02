@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.cdutet.mapper.ExameMapper">
+
+
+    <insert id="save">
+        INSERT INTO exame  (id,exame_name,exame_time,fuzhe_ren) VALUES  (#{exame.id},#{exame.exameName},#{exame.exameTime},#{exame.fuzheRen})
+    </insert>
+    <update id="esitExame">
+        UPDATE exame
+        SET  id=#{id},
+            exame_name=#{exameName},
+            exame_time=#{exameTime},
+            fuzhe_ren=#{fuzheRen} where id=#{id}
+    </update>
+    <delete id="deleteExame">
+        delete from exame where id=#{id}
+    </delete>
+    <select id="list" resultType="edu.cdutet.entity.Exame">
+        select * from exame
+
+    </select>
+    <select id="queryExameByid" resultType="edu.cdutet.entity.Exame">
+        select * from exame where id=#{id}
+    </select>
+    <select id="sousuolist" resultType="edu.cdutet.entity.Exame">
+        select * from exame where exame_name='温江区'
+<!--        <where>-->
+<!--            <if test="exameName!= null">-->
+<!--                exame_name LIKE concat('%',#{exameName},'%')-->
+<!--            </if>-->
+<!--        </where>-->
+
+    </select>
+</mapper>
